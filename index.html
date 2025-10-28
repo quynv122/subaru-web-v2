@@ -5,10 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta name="content-language" content="vi" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link
-      rel="shortcut icon"
-      href="/public/logo.png"
-    />
+    <link rel="shortcut icon" href="/public/logo.png" />
     <meta name="robots" content="index, follow" />
     <meta name="robots" content="noodp, noydir" />
     <meta name="googlebot" content="index, follow" />
@@ -61,9 +58,7 @@
     <section class="header">
       <div class="container">
         <div class="header-top">
-          <p class="address">
-            Số 1 Mạc Thái Tông, Cầu Giấy - Hà Nội
-          </p>
+          <p class="address">Số 1 Mạc Thái Tông, Cầu Giấy - Hà Nội</p>
           <a class="hotline" href="tel:0903893030" title=""
             >Hotline:<span>090 389 3030</span></a
           >
@@ -96,11 +91,7 @@
                   </a>
                 </li>
                 <li class="nav-item dropdown full">
-                  <a
-                    class="nav-link"
-                    href="/san-pham.html"
-                    title="Sản phẩm"
-                  >
+                  <a class="nav-link" href="/san-pham.html" title="Sản phẩm">
                     <span>Sản phẩm</span>
                     <i class="caret"></i>
                   </a>
@@ -109,7 +100,7 @@
                       <a href="lynk-co-06-1487816.html" title="Subaru Forester"
                         ><img
                           alt="Subaru 06"
-                          src="/assets/image/dropdown/dropdown.png"
+                          src="/assets/image/dropdown/10.png"
                         /><span class="dropdown-item-title"
                           >Subaru Forester</span
                         ></a
@@ -119,15 +110,25 @@
                       <a href="lynk-co-01-1487817.html" title="Subaru Crosstrek"
                         ><img
                           alt="Subaru 01"
-                          src="/assets/image/dropdown/dropdown.png"
-                        /><span class="dropdown-item-title">Subaru Crosstrek</span></a
+                          src="/assets/image/dropdown/9.png"
+                        /><span class="dropdown-item-title"
+                          >Subaru Crosstrek</span
+                        ></a
                       >
                     </div>
                     <div class="col-dropdown-item">
                       <a href="lynk-co-03-1487818.html" title="Subaru Outback"
                         ><img
                           alt="Subaru 03+"
-                          src="/assets/image/dropdown/dropdown.png"
+                          src="/assets/image/dropdown/8.png"
+                        /><span class="dropdown-item-title">Subaru WRX</span></a
+                      >
+                    </div>
+                    <div class="col-dropdown-item">
+                      <a href="lynk-co-09-1487820.html" title="Subaru WRX"
+                        ><img
+                          alt="Subaru 09"
+                          src="/assets/image/dropdown/7.png"
                         /><span class="dropdown-item-title"
                           >Subaru Outback</span
                         ></a
@@ -137,20 +138,8 @@
                       <a href="lynk-co-05-1487819.html" title="Subaru BRZ"
                         ><img
                           alt="Subaru 05"
-                          src="/assets/image/dropdown/dropdown.png"
-                        /><span class="dropdown-item-title"
-                          >Subaru BRZ</span
-                        ></a
-                      >
-                    </div>
-                    <div class="col-dropdown-item">
-                      <a href="lynk-co-09-1487820.html" title="Subaru WRX"
-                        ><img
-                          alt="Subaru 09"
-                          src="/assets/image/dropdown/dropdown.png"
-                        /><span class="dropdown-item-title"
-                          >Subaru WRX</span
-                        ></a
+                          src="/assets/image/dropdown/6.png"
+                        /><span class="dropdown-item-title">Subaru BRZ</span></a
                       >
                     </div>
                   </div>
@@ -212,38 +201,41 @@
       ></div>
     </section>
     <section>
-     <div class="banner-main">
-    <div class="owl-carousel owl-theme owl-banner-main" id="slide-container"></div>
-  </div>
+      <div class="banner-main">
+        <div
+          class="owl-carousel owl-theme owl-banner-main"
+          id="slide-container"
+        ></div>
+      </div>
 
-<!-- slide banner -->
-  <script>
-    // MẢNG ẢNH
-    var slide = [
-      "https://drive.gianhangvn.com/image/image-2862571j33900.jpg",
-      "https://drive.gianhangvn.com/image/hanh-trinh-lynkco-banner-2816998j33900.jpg",
-      "https://drive.gianhangvn.com/image/lynkco-09-banner-2817003j33900.jpg",
-      "https://drive.gianhangvn.com/image/tri-an-banner-2816999j33900.jpg",
-      "https://drive.gianhangvn.com/image/facebook-banner-2816997j33900.jpg"
-    ];
+      <!-- slide banner -->
+      <script>
+        // MẢNG ẢNH
+        var slide = [
+          "https://drive.gianhangvn.com/image/image-2862571j33900.jpg",
+          "https://drive.gianhangvn.com/image/hanh-trinh-lynkco-banner-2816998j33900.jpg",
+          "https://drive.gianhangvn.com/image/lynkco-09-banner-2817003j33900.jpg",
+          "https://drive.gianhangvn.com/image/tri-an-banner-2816999j33900.jpg",
+          "https://drive.gianhangvn.com/image/facebook-banner-2816997j33900.jpg",
+        ];
 
-    // LẤY CONTAINER
-    var container = document.getElementById("slide-container");
+        // LẤY CONTAINER
+        var container = document.getElementById("slide-container");
 
-    // TẠO HTML TỰ ĐỘNG
-    var html = "";
-    for (var i = 0; i < slide.length; i++) {
-      html +=
-        '<div class="item-img">' +
-        '  <a href="#" title="">' +
-        '    <img class="lazyload" data-src="' + slide[i] + '" alt="">' +
-        '  </a>' +
-        '</div>';
-    }
-    container.innerHTML = html;
-  </script>
-
-
+        // TẠO HTML TỰ ĐỘNG
+        var html = "";
+        for (var i = 0; i < slide.length; i++) {
+          html +=
+            '<div class="item-img">' +
+            '  <a href="#" title="">' +
+            '    <img class="lazyload" data-src="' +
+            slide[i] +
+            '" alt="">' +
+            "  </a>" +
+            "</div>";
+        }
+        container.innerHTML = html;
+      </script>
 
       <div class="detail-content">
         <div class="section-feature" style="padding: 20px 0">
@@ -362,7 +354,7 @@
                           alt="Lynk &amp; Co 06"
                           src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
                           class="lazyload"
-                          data-src="../drive.gianhangvn.com/image/car-list.png"
+                          data-src="/assets/image/products/10.png"
                       /></a>
                     </div>
 
@@ -403,7 +395,7 @@
                           alt="Lynk &amp; Co 06"
                           src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
                           class="lazyload"
-                          data-src="../drive.gianhangvn.com/image/car-list.png"
+                          data-src="/assets/image/products/9.png"
                       /></a>
                     </div>
 
@@ -444,7 +436,7 @@
                           alt="Lynk &amp; Co 06"
                           src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
                           class="lazyload"
-                          data-src="../drive.gianhangvn.com/image/car-list.png"
+                          data-src="/assets/image/products/8.png"
                       /></a>
                     </div>
 
@@ -485,7 +477,7 @@
                           alt="Lynk &amp; Co 06"
                           src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
                           class="lazyload"
-                          data-src="../drive.gianhangvn.com/image/car-list.png"
+                          data-src="/assets/image/products/7.png"
                       /></a>
                     </div>
 
@@ -526,7 +518,7 @@
                           alt="Lynk &amp; Co 06"
                           src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
                           class="lazyload"
-                          data-src="../drive.gianhangvn.com/image/car-list.png"
+                          data-src="/assets/image/products/6.png"
                       /></a>
                     </div>
 
@@ -567,130 +559,7 @@
                           alt="Lynk &amp; Co 06"
                           src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
                           class="lazyload"
-                          data-src="../drive.gianhangvn.com/image/car-list.png"
-                      /></a>
-                    </div>
-
-                    <div class="card-body">
-                      <h3 class="product-item-title">
-                        <a href="lynk-co-06-1487816.html" title="subaru car"
-                          >Subaru abc</a
-                        >
-                      </h3>
-
-                      <div class="product-item-price">
-                        <p class="price"><span>Giá từ:</span> 679 triệu</p>
-                      </div>
-
-                      <div class="row row-form">
-                        <div class="col-sm-6">
-                          <a
-                            class="btn btn-primary"
-                            href="javascript:OpenModelBaoGiaPopup()"
-                            ><i class="fas fa-bolt">&nbsp;</i
-                            ><span>Nhận Ưu Đãi</span></a
-                          >
-                        </div>
-
-                        <div class="col-sm-6">
-                          <a class="btn btn-default" href="tel:0903893030"
-                            ><i class="fas fa-phone-alt">&nbsp;</i
-                            ><span>Gọi Điện Chốt Giá</span></a
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card product-item">
-                    <div class="product-item-img">
-                      <a href="lynk-co-06-1487816.html" title="Lynk &amp; Co 06"
-                        ><img
-                          alt="Lynk &amp; Co 06"
-                          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                          class="lazyload"
-                          data-src="../drive.gianhangvn.com/image/car-list.png"
-                      /></a>
-                    </div>
-
-                    <div class="card-body">
-                      <h3 class="product-item-title">
-                        <a href="lynk-co-06-1487816.html" title="subaru car"
-                          >Subaru abc</a
-                        >
-                      </h3>
-
-                      <div class="product-item-price">
-                        <p class="price"><span>Giá từ:</span> 679 triệu</p>
-                      </div>
-
-                      <div class="row row-form">
-                        <div class="col-sm-6">
-                          <a
-                            class="btn btn-primary"
-                            href="javascript:OpenModelBaoGiaPopup()"
-                            ><i class="fas fa-bolt">&nbsp;</i
-                            ><span>Nhận Ưu Đãi</span></a
-                          >
-                        </div>
-
-                        <div class="col-sm-6">
-                          <a class="btn btn-default" href="tel:0903893030"
-                            ><i class="fas fa-phone-alt">&nbsp;</i
-                            ><span>Gọi Điện Chốt Giá</span></a
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card product-item">
-                    <div class="product-item-img">
-                      <a href="lynk-co-06-1487816.html" title="Lynk &amp; Co 06"
-                        ><img
-                          alt="Lynk &amp; Co 06"
-                          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                          class="lazyload"
-                          data-src="../drive.gianhangvn.com/image/car-list.png"
-                      /></a>
-                    </div>
-
-                    <div class="card-body">
-                      <h3 class="product-item-title">
-                        <a href="lynk-co-06-1487816.html" title="subaru car"
-                          >Subaru abc</a
-                        >
-                      </h3>
-
-                      <div class="product-item-price">
-                        <p class="price"><span>Giá từ:</span> 679 triệu</p>
-                      </div>
-
-                      <div class="row row-form">
-                        <div class="col-sm-6">
-                          <a
-                            class="btn btn-primary"
-                            href="javascript:OpenModelBaoGiaPopup()"
-                            ><i class="fas fa-bolt">&nbsp;</i
-                            ><span>Nhận Ưu Đãi</span></a
-                          >
-                        </div>
-
-                        <div class="col-sm-6">
-                          <a class="btn btn-default" href="tel:0903893030"
-                            ><i class="fas fa-phone-alt">&nbsp;</i
-                            ><span>Gọi Điện Chốt Giá</span></a
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card product-item">
-                    <div class="product-item-img">
-                      <a href="lynk-co-06-1487816.html" title="Lynk &amp; Co 06"
-                        ><img
-                          alt="Lynk &amp; Co 06"
-                          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                          class="lazyload"
-                          data-src="../drive.gianhangvn.com/image/car-list.png"
+                          data-src="/assets/image/products/5.png"
                       /></a>
                     </div>
 
@@ -951,9 +820,7 @@
                           </option>
                           <option class="option" value="1">Subaru 06</option>
                           <option class="option" value="2">Subaru 01</option>
-                          <option class="option" value="3">
-                            Subaru 03+
-                          </option>
+                          <option class="option" value="3">Subaru 03+</option>
                           <option class="option" value="4">Subaru 05</option>
                           <option class="option" value="5">Subaru 09</option>
                         </select>
@@ -1062,13 +929,14 @@
                 <ul class="footer-list">
                   <li>
                     <a href="bang-gia-xe-522803n.html"
-                      ><i class="fas fa-angle-right">&nbsp;</i>Bảng giá xe Subaru</a
+                      ><i class="fas fa-angle-right">&nbsp;</i>Bảng giá xe
+                      Subaru</a
                     >
                   </li>
                   <li>
                     <a href="mua-xe-tra-gop-522806n.html"
-                      ><i class="fas fa-angle-right">&nbsp;</i>Mua xe Subaru
-                      trả góp</a
+                      ><i class="fas fa-angle-right">&nbsp;</i>Mua xe Subaru trả
+                      góp</a
                     >
                   </li>
                   <li>
