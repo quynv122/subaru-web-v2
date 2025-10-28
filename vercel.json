@@ -1,0 +1,7 @@
+{
+  "public": "page",
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/", "destination": "/page/index.html", "permanent": false }
+  ]
+}
