@@ -6395,7 +6395,7 @@ function sendPriceQuote(e, t) {
       .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, m)
       .then(function (response) {
         $("body").trigger("stopLoading");
-        window.location.href = "page/gui-bao-gia-thanh-cong.html";
+        window.location.href = "/gui-bao-gia-thanh-cong.html";
       })
       .catch(function (error) {
         $("body").trigger("stopLoading");
