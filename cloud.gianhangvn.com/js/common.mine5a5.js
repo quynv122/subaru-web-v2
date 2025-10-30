@@ -6402,103 +6402,115 @@ function sendPriceQuote(e, t) {
 }
 
 function sendTestDrive(e, t) {
-  var n = "",
-    i = "",
-    a = "",
-    r = "",
-    o = "",
-    s = "",
-    d = "",
-    c = "",
-    h = !1,
-    l = !0;
-  if (
-    ($(t)
-      .find("[data-field]")
-      .each(function () {
-        if (((h = !0), l)) {
-          var e = $(this).attr("data-field"),
+  // ⚙️ Cấu hình EmailJS — thay bằng thông tin thật của bạn
+  const EMAILJS_SERVICE_ID = "service_eg39uzb";     // Service ID
+  const EMAILJS_TEMPLATE_ID = "template_ste54hl";   // Template ID
+  const EMAILJS_PUBLIC_KEY  = "DA6pr8lblacq4dvRU";  // Public Key (User ID)
+
+  // Nếu chưa init thì init EmailJS
+  if (typeof emailjs !== "undefined") {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }
+
+  // ------------------------
+  // Thu thập dữ liệu form
+  // ------------------------
+  var n = "", // Họ tên
+      i = "", // Điện thoại
+      a = "", // Email
+      r = "", // Địa chỉ / Tỉnh thành
+      o = "", // Tiêu đề
+      s = "", // Ghi chú / Thông tin thêm
+      d = "", // Dòng xe
+      c = "", // Ngày đăng ký
+      h = !1,
+      l = !0;
+
+  $(t)
+    .find("[data-field]")
+    .each(function () {
+      if (((h = !0), l)) {
+        var e = $(this).attr("data-field"),
             t = $(this).attr("data-type"),
             o = 1 == parseInt($(this).attr("data-required"));
-          switch (e) {
-            case "HoTen":
-              (n = $(this).val().trim()),
-                o &&
-                  0 == n.length &&
-                  ((l = !1),
-                  showAlertInfoFocus("Vui l\xf2ng nhập Họ t\xean", this));
-              break;
-            case "DienThoai":
-              (i = $(this).val().trim()), o && (l = checkValidPhone(i, this));
-              break;
-            case "Email":
-              (a = $(this).val().trim()),
-                o &&
-                  0 == a.length &&
-                  ((l = !1),
-                  showAlertInfoFocus("Vui l\xf2ng nhập Email", this));
-              break;
-            case "DiaChi":
-              r = $(this).val().trim();
-              break;
-            case "TinhThanh":
-              "text" == t
-                ? (r = $(this).val().trim())
-                : "select" == t &&
-                  (r = $(this).find("option:selected").text().trim());
-              break;
-            case "DongXe":
-              "label" == t
-                ? (d = $(this).attr("data-value"))
-                : ((d = $(this).val().trim()),
-                  o &&
-                    0 == d.length &&
-                    ((l = !1),
-                    showAlertInfoFocus(
-                      "Vui l\xf2ng nhập nhập d\xf2ng xe",
-                      this
-                    )));
-              break;
-            case "NgayDangKy":
-              (c = $(this).val().trim()).length > 0 &&
-                (s += "Ng\xe0y đăng k\xfd l\xe1i thử: " + c + ". ");
-              break;
-            case "GhiChu":
-              (c = $(this).val().trim()).length > 0 && (s += c + ". ");
-          }
+        switch (e) {
+          case "HoTen":
+            n = $(this).val().trim();
+            o && 0 == n.length && ((l = !1), showAlertInfoFocus("Vui lòng nhập Họ tên", this));
+            break;
+          case "DienThoai":
+            i = $(this).val().trim();
+            o && (l = checkValidPhone(i, this));
+            break;
+          case "Email":
+            a = $(this).val().trim();
+            break;
+          case "DiaChi":
+            r = $(this).val().trim();
+            break;
+          case "TinhThanh":
+            "text" == t
+              ? (r = $(this).val().trim())
+              : "select" == t && (r = $(this).find("option:selected").text().trim());
+            break;
+          case "DongXe":
+            "label" == t
+              ? (d = $(this).attr("data-value"))
+              : "text" == t
+              ? ((d = $(this).val().trim()),
+                  o && 0 == d.length && ((l = !1), showAlertInfoFocus("Vui lòng nhập dòng xe", this)))
+              : "select" == t &&
+                (o && 0 > $(this).val()
+                  ? ((l = !1), showAlertInfoFocus("Vui lòng chọn dòng xe", this))
+                  : (d = $(this).find("option:selected").text().trim()));
+            break;
+          case "NgayDangKy":
+            (c = $(this).val().trim()).length > 0 && (s += "Ngày đăng ký lái thử: " + c + ". ");
+            break;
+          case "GhiChu":
+            (c = $(this).val().trim()).length > 0 && (s += c + ". ");
         }
-      }),
-    !h)
-  ) {
-    showAlertInfo("Kh\xf4ng t\xecm thấy dữ liệu! Vui l\xf2ng thử lại");
+      }
+    });
+
+  if (!h) {
+    showAlertInfo("Không tìm thấy dữ liệu! Vui lòng thử lại");
     return;
   }
+
+  // ------------------------
+  // Gửi qua EmailJS
+  // ------------------------
   if (l) {
-    o = "Số điện thoại [" + i + "] đ\xe3 đăng k\xfd l\xe1i thử xe [" + d + "]";
-    var u = new Ajax(e),
-      m = {
-        contactname: n,
-        email: a,
-        phone: i,
-        address: r,
-        subject: o,
-        message: s,
-      };
-    $("body").trigger("startLoading"),
-      u.postData("/page/contact", m, function (e) {
-        if (($("body").trigger("stopLoading"), e.status > 0)) {
-          if (parseInt(e.data) > 0) {
-            var n = $(t).attr("data-url");
-            (n && 0 != n.length) || (n = "/dang-ky-lai-xe-thu-thanh-cong.html"),
-              (window.location.href = n);
-          } else
-            showAlertWarning(
-              "Đăng k\xfd l\xe1i thử kh\xf4ng th\xe0nh c\xf4ng. Vui l\xf2ng thử lại"
-            );
-        } else showAlertWarning(e.message);
+    o = "Số điện thoại [" + i + "] đã đăng ký lái thử xe [" + d + "]";
+
+    // Dữ liệu gửi
+    var m = {
+      title: o,            // {{title}}
+      name: n,             // {{name}}
+      email: a,            // {{email}}
+      phone: i,            // {{phone}}
+      address: r,          // {{address}}
+      message: s,          // {{message}}
+      time: new Date().toLocaleString("vi-VN"), // {{time}}
+    };
+
+    $("body").trigger("startLoading");
+
+    // Gửi qua EmailJS
+    emailjs
+      .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, m)
+      .then(function (response) {
+        $("body").trigger("stopLoading");
+        window.location.href = "dang-ky-lai-xe-thu-thanh-cong.html";
+      })
+      .catch(function (error) {
+        $("body").trigger("stopLoading");
+        showAlertWarning("Không gửi được thông tin. Vui lòng thử lại sau!");
       });
   }
 }
+
 function sendRegisterReal(e, t) {
   var n = "",
     i = "",
