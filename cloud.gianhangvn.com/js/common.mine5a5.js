@@ -6288,7 +6288,7 @@ function sendContact(e, t) {
 }
 function sendPriceQuote(e, t) {
   // ⚙️ Cấu hình EmailJS — thay bằng thông tin thật của bạn
-  const EMAILJS_SERVICE_ID = "service_sbnvi23";     // Service ID
+  const EMAILJS_SERVICE_ID = "service_eg39uzb";     // Service ID
   const EMAILJS_TEMPLATE_ID = "template_ste54hl"; // Template ID
   const EMAILJS_PUBLIC_KEY  = "DA6pr8lblacq4dvRU";  // Public Key (User ID)
   
