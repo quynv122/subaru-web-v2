@@ -6288,9 +6288,9 @@ function sendContact(e, t) {
 }
 function sendPriceQuote(e, t) {
   // ⚙️ Cấu hình EmailJS — thay bằng thông tin thật của bạn
-  const EMAILJS_SERVICE_ID = "service_fhnova5";     // Service ID
-  const EMAILJS_TEMPLATE_ID = "template_4h7v6ij"; // Template ID
-  const EMAILJS_PUBLIC_KEY  = "ynIR7xeNg4VWNsXpb";  // Public Key (User ID)
+  const EMAILJS_SERVICE_ID = "service_sbnvi23";     // Service ID
+  const EMAILJS_TEMPLATE_ID = "template_ste54hl"; // Template ID
+  const EMAILJS_PUBLIC_KEY  = "DA6pr8lblacq4dvRU";  // Public Key (User ID)
   
   // Nếu chưa init thì init EmailJS
   if (typeof emailjs !== "undefined") {
@@ -6384,10 +6384,7 @@ function sendPriceQuote(e, t) {
       message: s,          // {{message}}
       time: new Date().toLocaleString("vi-VN"), // {{time}}
     };
-
-    console.log("📦 Dữ liệu gửi qua EmailJS:", m);
     $("body").trigger("startLoading");
-
     // ------------------------
     // Gửi dữ liệu tới EmailJS
     // ------------------------
