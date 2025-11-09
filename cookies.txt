@@ -1,4 +1,0 @@
-# HTTrack Website Copier Cookie File
-# This file format is compatible with Netscape cookies
-lynkcolongbien.com	TRUE	/	FALSE	1999999999	uid	f32fb8f3-ab0e-44fe-85c9-140a99a61f11
-
