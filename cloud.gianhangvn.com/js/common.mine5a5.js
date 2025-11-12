@@ -6590,96 +6590,91 @@ function sendRegisterReal(e, t) {
   }
 }
 function sendBook(e, t, n) {
-  var i = "",
-    a = "",
-    r = "",
-    o = "",
-    s = !1,
-    d = !0,
-    c = "";
-  if (
-    ((n && null != n && void 0 !== n) || (n = ""),
-    $(t)
-      .find("[data-field]")
-      .each(function () {
-        if (((s = !0), d)) {
-          var e = $(this).attr("data-field"),
+  // ⚙️ Cấu hình EmailJS — giữ nguyên như sendPriceQuote
+  const EMAILJS_SERVICE_ID = "service_eg39uzb";     // Service ID
+  const EMAILJS_TEMPLATE_ID = "template_ste54hl";   // Template ID
+  const EMAILJS_PUBLIC_KEY  = "DA6pr8lblacq4dvRU";  // Public Key
+
+  // Nếu chưa init thì init EmailJS
+  if (typeof emailjs !== "undefined") {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }
+
+  // ------------------------
+  // Thu thập dữ liệu form
+  // ------------------------
+  var n1 = "", // Họ tên
+      i1 = "", // Điện thoại
+      a1 = "", // Email (trống)
+      r1 = "", // Địa chỉ (trống)
+      o1 = "", // Tiêu đề
+      s1 = "", // Ghi chú
+      d1 = "", // Dòng xe (trống)
+      c1 = "", // Ghi chú thêm
+      h1 = !1,
+      l1 = !0;
+
+  $(t)
+    .find("[data-field]")
+    .each(function () {
+      if (((h1 = !0), l1)) {
+        var e = $(this).attr("data-field"),
             t = $(this).attr("data-type"),
-            n = $(this).attr("data-title"),
-            h = 1 == parseInt($(this).attr("data-required"));
-          switch (e) {
-            case "HoTen":
-              (i = $(this).val().trim()),
-                h &&
-                  0 == i.length &&
-                  ((d = !1),
-                  showAlertInfoFocus("Vui l\xf2ng nhập Họ t\xean", this));
-              break;
-            case "DienThoai":
-              (a = $(this).val().trim()), h && (d = checkValidPhone(a, this));
-              break;
-            case "Email":
-              (r = $(this).val().trim()),
-                h &&
-                  0 == r.length &&
-                  ((d = !1),
-                  showAlertInfoFocus("Vui l\xf2ng nhập Email", this));
-              break;
-            case "GhiChu":
-              (c = $(this).val().trim()),
-                h &&
-                  0 == c.length &&
-                  ((d = !1),
-                  showAlertInfoFocus("Vui l\xf2ng nhập ghi ch\xfa", this)),
-                c.length > 0 && (o.length > 0 && (o += ". "), (o += c));
-              break;
-            default:
-              "text" == t
-                ? ((c = $(this).val().trim()),
-                  h &&
-                    0 == c.length &&
-                    ((d = !1),
-                    showAlertInfoFocus("Vui l\xf2ng nhập " + n, this)))
-                : "select" == t &&
-                  (h && 0 > $(this).val()
-                    ? ((d = !1),
-                      showAlertInfoFocus("Vui l\xf2ng chọn " + n, this))
-                    : (c = $(this).find("option:selected").text().trim())),
-                c.length > 0 && (o.length > 0 && (o += ". "), (o += c));
-          }
+            o = 1 == parseInt($(this).attr("data-required"));
+        switch (e) {
+          case "HoTen":
+            n1 = $(this).val().trim();
+            o && 0 == n1.length && ((l1 = !1), showAlertInfoFocus("Vui lòng nhập Họ tên", this));
+            break;
+          case "DienThoai":
+            i1 = $(this).val().trim();
+            o && (l1 = checkValidPhone(i1, this));
+            break;
         }
-      }),
-    !s)
-  ) {
-    showAlertInfo("Kh\xf4ng t\xecm thấy dữ liệu! Vui l\xf2ng thử lại");
+      }
+    });
+
+  if (!h1) {
+    showAlertInfo("Không tìm thấy dữ liệu! Vui lòng thử lại");
     return;
   }
-  if (d) {
-    n = "Số điện thoại [" + a + "] đ\xe3 gửi y\xeau cầu " + n;
-    var h = new Ajax(e),
-      l = {
-        contactname: i,
-        email: r,
-        phone: a,
-        address: "",
-        subject: n,
-        message: o,
-      };
-    $("body").trigger("startLoading"),
-      h.postData("/page/contact", l, function (e) {
-        if (($("body").trigger("stopLoading"), e.status > 0)) {
-          if (parseInt(e.data) > 0) {
-            var n = $(t).attr("data-url");
-            (n && 0 != n.length) || (n = "/gui-bao-gia-thanh-cong.html"),
-              (window.location.href = n);
-          } else
-            showAlertWarning(
-              "Gửi y\xeau cầu kh\xf4ng th\xe0nh c\xf4ng. Vui l\xf2ng thử lại"
-            );
-        } else showAlertWarning(e.message);
+
+  if (l1) {
+    o1 = "Số điện thoại [" + i1 + "] đã gửi yêu cầu đăng ký nhận báo giá Subaru";
+
+    // ------------------------
+    // Tạo dữ liệu gửi qua EmailJS
+    // ------------------------
+    var m1 = {
+      title: o1,            // {{title}}
+      name: n1,             // {{name}}
+      email: a1,            // {{email}} trống
+      phone: i1,            // {{phone}}
+      address: r1,          // {{address}} trống
+      car_model: d1,        // {{car_model}} trống
+      message: s1,          // {{message}} trống
+      time: new Date().toLocaleString("vi-VN"), // {{time}}
+    };
+
+    $("body").trigger("startLoading");
+
+    // ------------------------
+    // Gửi dữ liệu qua EmailJS
+    // ------------------------
+    emailjs
+      .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, m1)
+      .then(function (response) {
+        $("body").trigger("stopLoading");
+        window.location.href = "gui-bao-gia-thanh-cong.html";
+      })
+      .catch(function (error) {
+        $("body").trigger("stopLoading");
+        showAlertWarning("Không gửi được thông tin. Vui lòng thử lại sau!");
       });
   }
 }
+
+
 function getUIDCookie() {
   return ((window.cookies = {}),
   document.cookie.split("; ").map((e) => {
@@ -6728,13 +6723,13 @@ function showStatisticTraffics(e, t) {
     }
   });
 }
-function updateVisitor() {
-  var e = new Date().getTime(),
-    t = parseInt(getCache("visitor"));
-  (!t || e > t) &&
-    (addCache("visitor", (e += 3e4)),
-    new Ajax(window.webUrl).getData("/api/updatevisitor", function (e) {}));
-}
+// function updateVisitor() {
+//   var e = new Date().getTime(),
+//     t = parseInt(getCache("visitor"));
+//   (!t || e > t) &&
+//     (addCache("visitor", (e += 3e4)),
+//     new Ajax(window.webUrl).getData("/api/updatevisitor", function (e) {}));
+// }
 function updateViewContents() {
   if (window.tokenview && window.tokenview.length > 0) {
     var e = !1,

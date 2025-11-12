@@ -55,6 +55,22 @@
       rel="stylesheet"
       href="../cloud.gianhangvn.com/templates/0022/skin03/css/style.css"
     />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-17324045112"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "AW-17324045112");
+    </script>
+    <!-- end Google tag  -->
   </head>
   <body>
     <!--header-->
@@ -303,6 +319,7 @@
           </div>
         </div>
       </div>
+      <!-- form đăng ký nhận báo giá -->
       <div class="wrap section-pricequote">
         <div class="container">
           <div class="row">
@@ -1473,7 +1490,7 @@
                           ><i class="fas fa-phone-alt">&nbsp;</i
                           >Hotline: </strong
                         ><a href="tel:0983972528" title="Gọi ngay"
-                          >00983972528</a
+                          >0983972528</a
                         >
                       </p>
 
@@ -1619,33 +1636,7 @@
       async
       defer
     ></script>
-    <script type="text/javascript">
-      window.token =
-        "fEmzqZXW1kzlUFHhgHkVRimRriJyR1DYfKFB7M5W4JMv4xD4dyAI5KTb1GX7qhI-";
-      window.tokenview = "";
-      window.language = "vi";
-      window.webUrl = "index.html";
-      window.pageKey = "home";
-      window.fbAsyncInit = function () {
-        FB.init({
-          appId: "",
-          cookie: true,
-          xfbml: true,
-          version: "v3.2",
-        });
-      };
-      (function (d, s, id) {
-        var js,
-          fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {
-          return;
-        }
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "../connect.facebook.net/vi_VN/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      })(document, "script", "facebook-jssdk");
-    </script>
+
     <style>
       @media (min-width: 992px) {
         .navbar-nav .full .dropdown-menu .col-dropdown-item {
