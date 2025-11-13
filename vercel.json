@@ -2,6 +2,11 @@
   "rewrites": [
     { "source": "/", "destination": "/page/index.html" }
   ],
+  "redirects": [
+    { "source": "/index.html", "destination": "/page/index.html", "permanent": true }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/sitemap.xml",
