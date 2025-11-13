@@ -7,13 +7,5 @@
     { "src": "/page/(.*)", "dest": "/page/$1" },
     { "src": "/page/.*", "dest": "/page/index.html" },
     { "src": "/(.*)", "dest": "/$1" }
-  ],
-  "headers": [
-    {
-      "source": "/sitemap.xml",
-      "headers": [
-        { "key": "Content-Type", "value": "application/xml" }
-      ]
-    }
   ]
 }
